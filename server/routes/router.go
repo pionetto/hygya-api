@@ -13,13 +13,13 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	main := router.Group("api/v1")
 	{
 		//Criando o Grupo de Livros (books)
-		books := main.Group("paciente")
+		pacientes := main.Group("paciente")
 		{
-			books.GET("/:id", controllers.ShowPaciente)
-			books.GET("/", controllers.ShowPacientes)
-			books.POST("/", controllers.CreateBook)
-			books.PUT("/", controllers.UpdateBook)
-			books.DELETE("/:id", controllers.DeleteBook)
+			pacientes.GET("/:id", controllers.ShowPaciente)
+			pacientes.GET("/", controllers.ShowPacientes)
+			pacientes.POST("/", controllers.CreateBook)
+			pacientes.PUT("/", controllers.UpdateBook)
+			pacientes.DELETE("/:id", controllers.DeleteBook)
 		}
 	}
 	return router

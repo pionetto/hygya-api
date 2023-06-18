@@ -72,6 +72,7 @@ func ShowPacientes(c *gin.Context) {
 	}
 
 	c.JSON(200, pacientes)
+
 }
 
 func UpdateBook(c *gin.Context) {
