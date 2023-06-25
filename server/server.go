@@ -3,6 +3,7 @@ package server
 import (
 	"hygya-api/server/routes"
 	"log"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -16,12 +17,26 @@ type Server struct {
 func NewServer() Server {
 	r := gin.Default()
 
-	config := cors.DefaultConfig()
-	config.AllowAllOrigins = true
-	config.AddAllowHeaders("X-Requested-With", "Content-Type", "Authorization")
-	config.AddAllowMethods("GET", "POST", "PUT", "DELETE")
-	r.Use(cors.New(config))
-	r.Use(cors.New(config))
+	// config := cors.DefaultConfig()
+	// // config.AllowAllOrigins = true
+	// config.AllowOrigins = []string{"*"}
+	// config.AddAllowHeaders("X-Requested-With", "Content-Type", "Authorization", "XMLHttpRequest")
+	// config.AddAllowMethods("GET", "POST", "PUT", "DELETE")
+	// r.Use(cors.New(config))
+	// r.Use(cors.New(config))
+
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "PATCH"},
+		AllowHeaders:     []string{"Origin", "X-Requested-With", "Content-Type", "Authorization", "XMLHttpRequest"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		AllowOriginFunc: func(origin string) bool {
+			return origin == "*"
+		},
+		MaxAge: 12 * time.Hour,
+	}))
+	r.Run()
 
 	return Server{
 		port:   "5000",

@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// FUNÇÃO PARA MOSTRAR UM PACIENTE
-func ShowPaciente(c *gin.Context) {
+// FUNÇÃO PARA MOSTRAR UM MEDICO
+func ShowMedico(c *gin.Context) {
 	id := c.Param("id")
 
 	//Atoi converte para INT
@@ -23,88 +23,88 @@ func ShowPaciente(c *gin.Context) {
 
 	db := database.GetDataBase()
 
-	var paciente models.Paciente
+	var medico models.Medico
 
-	err = db.First(&paciente, newid).Error
+	err = db.First(&medico, newid).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Não pode encontrar o paciente: " + err.Error(),
+			"error": "Não pode encontrar o médico: " + err.Error(),
 		})
 		return
 	}
-	c.JSON(200, paciente)
+	c.JSON(200, medico)
 }
 
-// FUNÇÃO PARA CRIAR OS PACIENTES
-func CreatePaciente(c *gin.Context) {
+// FUNÇÃO PARA CRIAR OS MEDICOS
+func CreateMedico(c *gin.Context) {
 	db := database.GetDataBase()
 
-	var paciente models.Paciente
+	var medico models.Medico
 
-	err := c.ShouldBindJSON(&paciente)
+	err := c.ShouldBindJSON(&medico)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não é possível vincular o JSON: " + err.Error(),
 		})
 		return
 	}
-	err = db.Create(&paciente).Error
+	err = db.Create(&medico).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Não pode criar um Paciente: " + err.Error(),
+			"error": "Não pode criar um médico: " + err.Error(),
 		})
 		return
 	}
 
-	c.JSON(200, paciente)
+	c.JSON(200, medico)
 }
 
 // FUNÇÃO PARA MOSTRAR OS PACIENTES
-func ShowPacientes(c *gin.Context) {
+func ShowMedicos(c *gin.Context) {
 	db := database.GetDataBase()
 
-	var pacientes []models.Paciente
-	err := db.Find(&pacientes).Error
+	var medico []models.Medico
+	err := db.Find(&medico).Error
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "cannot list pacientes: " + err.Error(),
+			"error": "Não pode listar os médicos: " + err.Error(),
 		})
 		return
 	}
 
-	c.JSON(200, pacientes)
+	c.JSON(200, medico)
 
 }
 
 // FUNÇÃO PARA ATUALIZAR UM PACIENTE
-func UpdatePacientes(c *gin.Context) {
+func UpdateMedicos(c *gin.Context) {
 	db := database.GetDataBase()
 
-	var paciente models.Paciente
+	var medico models.Medico
 
-	err := c.ShouldBindJSON(&paciente)
+	err := c.ShouldBindJSON(&medico)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não é possível vincular o JSON: " + err.Error(),
 		})
 		return
 	}
-	err = db.Save(&paciente).Error
+	err = db.Save(&medico).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"Erro": "Não pode atualizar o paciente: " + err.Error(),
+			"Erro": "Não pode atualizar o médico: " + err.Error(),
 		})
 		return
 	}
 
-	c.JSON(200, paciente)
+	c.JSON(200, medico)
 }
 
 // FUNÇÃO PARA DELETAR UM PACIENTE
-func DeletePacientes(c *gin.Context) {
+func DeleteMedicos(c *gin.Context) {
 	id := c.Param("id")
 
 	//Atoi converte para INT
@@ -118,11 +118,11 @@ func DeletePacientes(c *gin.Context) {
 
 	db := database.GetDataBase()
 
-	err = db.Delete(&models.Paciente{}, newid).Error
+	err = db.Delete(&models.Medico{}, newid).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Não pode deletar o Paciente: " + err.Error(),
+			"error": "Não pode deletar o médico: " + err.Error(),
 		})
 		return
 	}
