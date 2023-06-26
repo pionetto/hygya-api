@@ -16,7 +16,7 @@ func ShowMedico(c *gin.Context) {
 	newid, err := strconv.Atoi(id)
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "ID has to be integer",
+			"error": "ID tem que ser um inteiro",
 		})
 		return
 	}

@@ -12,8 +12,7 @@ type Medico struct {
 	Sexo              string         `json:"sexo"` //relacionamento
 	Data_nasc         time.Time      `json:"data_nasc"`
 	Cpf               string         `json:"cpf"`
-	EspecialidadeID   uint           `json:"especialidadeID"` //relacionamento
-	Especialidade     Especialidade  `json:"especialidade"`
+	Especialidade     string         `json:"especialidade"`
 	Rqe               string         `json:"rqe"`
 	Crm_estado        string         `json:"crm_estado"` //relacionamento
 	Crm_numero        string         `json:"crm_numero"`

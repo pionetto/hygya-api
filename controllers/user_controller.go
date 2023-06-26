@@ -4,6 +4,7 @@ import (
 	"hygya-api/database"
 	"hygya-api/models"
 	"hygya-api/services"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -42,11 +43,62 @@ func ShowUsers(c *gin.Context) {
 	err := db.Find(&user).Error
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "cannot list users: " + err.Error(),
+			"error": "Não pode listar os usuários: " + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(200, user)
+}
 
+// FUNÇÃO PARA ATUALIZAR UM PACIENTE
+func UpdateUsers(c *gin.Context) {
+	db := database.GetDataBase()
+
+	var user models.User
+
+	err := c.ShouldBindJSON(&user)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "Não é possível vincular o JSON: " + err.Error(),
+		})
+		return
+	}
+	err = db.Save(&user).Error
+
+	if err != nil {
+		c.JSON(400, gin.H{
+			"Erro": "Não pode atualizar o usuário: " + err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, user)
+}
+
+// FUNÇÃO PARA DELETAR UM PACIENTE
+func DeleteUsers(c *gin.Context) {
+	id := c.Param("id")
+
+	//Atoi converte para INT
+	newid, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "ID tem que ser inteiro",
+		})
+		return
+	}
+
+	db := database.GetDataBase()
+
+	err = db.Delete(&models.User{}, newid).Error
+
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "Não pode deletar o usuário: " + err.Error(),
+		})
+		return
+	}
+
+	c.Status(204)
 }

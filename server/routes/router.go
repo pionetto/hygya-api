@@ -16,6 +16,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		{
 			user.POST("/", controllers.CreateUser)
 			user.GET("/", controllers.ShowUsers)
+			user.PUT("/", controllers.UpdateUsers)
+			user.DELETE("/:id", controllers.DeleteUsers)
 		}
 		//Criando o Grupo de Pacientes
 		// pacientes := main.Group("paciente", middlewares.Auth())
