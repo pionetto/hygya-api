@@ -8,6 +8,7 @@ e de qualquer lugar, pelo fato da aplicação ser web.
 
 ## :books: Funcionalidades
 * <b>Funcionalidade 1</b>
+</br>
 Esta é uma API desenvolvida na linguagem [Golang](https://go.dev/).
 
 Ela realiza o cadastro, edição, visualização e remoção de:
@@ -27,7 +28,7 @@ via JWT com Bearer no Header ( arquivo em server/middlewares/auth_middleware.go 
 
 Estes itens são acessados através das seguintes rotas:
 
-```
+```go
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 	main := router.Group("api/v1")
