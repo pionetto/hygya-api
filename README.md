@@ -294,7 +294,7 @@ Este token é gerado no package services.
 * [Golang](https://go.dev/);
 * [Gin Framework](https://github.com/gin-gonic/gin);
 * [Gorm](gorm.io/gorm);
-* [Golang-JWT] (https://github.com/golang-jwt/jwt);
+* [Golang-JWT](https://github.com/golang-jwt/jwt);
 * [Gorilla Mux](github.com/gorilla/mux);
 * [PostgreSQL](https://go.dev/);
 * [Github](https://go.dev/);
