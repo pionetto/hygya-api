@@ -36,6 +36,33 @@ func CreateUser(c *gin.Context) {
 	c.JSON(200, p)
 }
 
+func ShowUser(c *gin.Context) {
+	id := c.Param("id")
+
+	//Atoi converte para INT
+	newid, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "ID tem que ser um inteiro",
+		})
+		return
+	}
+
+	db := database.GetDataBase()
+
+	var user models.User
+
+	err = db.First(&user, newid).Error
+
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "Não pode encontrar o usuário: " + err.Error(),
+		})
+		return
+	}
+	c.JSON(200, user)
+}
+
 func ShowUsers(c *gin.Context) {
 	db := database.GetDataBase()
 

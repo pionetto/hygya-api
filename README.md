@@ -26,7 +26,7 @@ Pois os exames e pacientes são dados que não podem ser apagados.
 O usuário realiza o login via middleware, através de token de autentitação 
 via JWT com Bearer no Header ( arquivo em server/middlewares/auth_middleware.go ).
 
-Estes itens são acessados através das seguintes rotas:
+Abaixo estão as rotas criadas:
 
 ```go
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
@@ -35,6 +35,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	{
 		user := main.Group("users")
 		{
+      user.GET("/:id", controllers.ShowUser)
 			user.POST("/", controllers.CreateUser)
 			user.GET("/", controllers.ShowUsers)
 			user.PUT("/", controllers.UpdateUsers)
@@ -71,8 +72,130 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 }
 
 ```
+E para acessa-las, podemos utilizar uma ferramenta chamada Insomnia(clique [aqui](https://insomnia.rest/download) para baixar),
+para testar se os endpoints estão funcionando corretamente.
+Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 
 
+## Sobre a API
+* Todos os caminhos da API poderão ser acessados a partir do link http://localhost:5000/api/v1;
+* Todos os caminhos da api utilizam o metodo de requisição GET;
+* As respostas das requisições feitas a api são em formato JSON;
+
+# User
+**Criar Usuário** 
+**Método:** POST
+**Endpoint:** http://localhost:5000/api/v1/users
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+		"name": "Pio Lima",
+		"email": "pio@pio.com",
+		"password": "123456"
+}
+```
+
+**Listar Usuários** 
+**Método:** GET
+**Endpoint:** http://localhost:5000/api/v1/users
+
+**Listar um Usuário** 
+**Método:** GET
+**Endpoint:** http://localhost:5000/api/v1/users/{id}
+
+**Atualizar Usuários** 
+**Método:** PUT
+**Endpoint:** http://localhost:5000/api/v1/users
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+	"id": 3,
+	"name": "Pandora Cunha",
+	"email": "pandora@pandora.com",
+	"password": "pandora"
+}
+```
+
+**Deletar um Usuário** 
+**Método:** DELETE
+**Endpoint:** http://localhost:5000/api/v1/users/{id}
+
+
+# Medico
+**Criar Médico** 
+**Método:** POST
+**Endpoint:** http://localhost:5000/api/v1/medico
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+		"nome": "Hipócrates da Grecia Antiga",
+		"sexo": "M",
+		"data_nasc": "1900-06-20T00:00:00Z",
+		"cpf": "99999999999",
+		"especialidade": "1",
+		"rqe": "44664644",
+		"crm_estado": "PARÁ",
+		"crm_numero": "121212",
+		"end_logradouro": "RUA ABCD",
+		"end_numero": "11111",
+		"end_complemento": "ESQUINA COM RUA B",
+		"end_bairro": "CENTRO",
+		"end_cidade": "SANTARÉM",
+		"end_uf": "PARÁ",
+		"end_cep": "68000-000",
+		"contato_email": "teste@teste.com",
+		"contato_telefone1": "939999-9999",
+		"contato_telefone2": " ",
+		"contato_telefone3": " ",
+		"contato_obs": " "
+}
+```
+
+**Listar Médicos** 
+**Método:** GET
+**Endpoint:** http://localhost:5000/api/v1/medico
+
+**Listar um Médico** 
+**Método:** GET
+**Endpoint:** http://localhost:5000/api/v1/medico/{id}
+
+**Atualizar Médico** 
+**Método:** PUT
+**Endpoint:** http://localhost:5000/api/v1/medico
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+	"id": 1,
+	"nome": "Hipócrates da Grecia Nova",
+	"sexo": "M",
+	"data_nasc": "1900-06-20T00:00:00Z",
+	"cpf": "99999999999",
+	"especialidade": "Radiologia",
+	"rqe": "44664644",
+	"crm_estado": "PARÁ",
+	"crm_numero": "121212",
+	"end_logradouro": "RUA ABCD",
+	"end_numero": "11111",
+	"end_complemento": "ESQUINA COM RUA B",
+	"end_bairro": "CENTRO",
+	"end_cidade": "SANTARÉM",
+	"end_uf": "PARÁ",
+	"end_cep": "68000-000",
+	"contato_email": "teste@teste.com",
+	"contato_telefone1": "939999-9999",
+	"contato_telefone2": " ",
+	"contato_telefone3": " ",
+	"contato_obs": " "
+}
+```
+
+**Deletar um Médico** 
+**Método:** DELETE
+**Endpoint:** http://localhost:5000/api/v1/medico/{id}
 
 
 
