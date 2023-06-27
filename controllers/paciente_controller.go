@@ -36,31 +36,6 @@ func ShowPaciente(c *gin.Context) {
 	c.JSON(200, paciente)
 }
 
-// FUNÇÃO PARA CRIAR OS PACIENTES
-func CreatePaciente(c *gin.Context) {
-	db := database.GetDataBase()
-
-	var paciente models.Paciente
-
-	err := c.ShouldBindJSON(&paciente)
-	if err != nil {
-		c.JSON(400, gin.H{
-			"error": "Não é possível vincular o JSON: " + err.Error(),
-		})
-		return
-	}
-	err = db.Create(&paciente).Error
-
-	if err != nil {
-		c.JSON(400, gin.H{
-			"error": "Não pode criar um Paciente: " + err.Error(),
-		})
-		return
-	}
-
-	c.JSON(200, paciente)
-}
-
 // FUNÇÃO PARA MOSTRAR OS PACIENTES
 func ShowPacientes(c *gin.Context) {
 	db := database.GetDataBase()
@@ -75,58 +50,5 @@ func ShowPacientes(c *gin.Context) {
 	}
 
 	c.JSON(200, pacientes)
-
-}
-
-// FUNÇÃO PARA ATUALIZAR UM PACIENTE
-func UpdatePacientes(c *gin.Context) {
-	db := database.GetDataBase()
-
-	var paciente models.Paciente
-
-	err := c.ShouldBindJSON(&paciente)
-	if err != nil {
-		c.JSON(400, gin.H{
-			"error": "Não é possível vincular o JSON: " + err.Error(),
-		})
-		return
-	}
-	err = db.Save(&paciente).Error
-
-	if err != nil {
-		c.JSON(400, gin.H{
-			"Erro": "Não pode atualizar o paciente: " + err.Error(),
-		})
-		return
-	}
-
-	c.JSON(200, paciente)
-}
-
-// FUNÇÃO PARA DELETAR UM PACIENTE
-func DeletePacientes(c *gin.Context) {
-	id := c.Param("id")
-
-	//Atoi converte para INT
-	newid, err := strconv.Atoi(id)
-	if err != nil {
-		c.JSON(400, gin.H{
-			"error": "ID tem que ser inteiro",
-		})
-		return
-	}
-
-	db := database.GetDataBase()
-
-	err = db.Delete(&models.Paciente{}, newid).Error
-
-	if err != nil {
-		c.JSON(400, gin.H{
-			"error": "Não pode deletar o Paciente: " + err.Error(),
-		})
-		return
-	}
-
-	c.Status(204)
 
 }

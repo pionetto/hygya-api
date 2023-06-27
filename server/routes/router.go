@@ -26,9 +26,6 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		{
 			pacientes.GET("/:id", controllers.ShowPaciente)
 			pacientes.GET("/", controllers.ShowPacientes)
-			pacientes.POST("/", controllers.CreatePaciente)
-			pacientes.PUT("/", controllers.UpdatePacientes)
-			pacientes.DELETE("/:id", controllers.DeletePacientes)
 		}
 		medicos := main.Group("medico")
 		{

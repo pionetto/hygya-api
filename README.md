@@ -256,6 +256,92 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 **Endpoint:** http://localhost:5000/api/v1/medico/{id}
 </br>
 
+# Paciente
+
+**Listar Pacientes** </br>
+</br>
+
+**Método:** GET 
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/medico
+</br>
+
+**Listar um Paciente**
+</br>
+
+**Método:** GET
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/medico/{id}
+
+
+# Especialidade
+
+**Criar Especialidade**
+</br>
+
+**Método:** POST
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/especialidade
+</br>
+
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+	"especialidade": "Radiologia"
+}
+```
+
+**Listar Especialidades**
+</br>
+
+**Método:** GET
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/especialidades
+</br>
+</br>
+
+**Listar uma Especialidade**
+</br>
+
+**Método:** GET
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/especialidade/{id}
+</br>
+</br>
+
+**Atualizar Especialidade**
+</br>
+
+**Método:** PUT
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/users
+</br>
+
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+	"id": 1,
+	"especialidade": "Radiologiaa"
+}
+```
+
+**Deletar uma Especialidade**
+</br>
+
+**Método:** DELETE
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/users/{id}
+</br>
+
 
 ## Login
 </br>
