@@ -83,9 +83,17 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 * As respostas das requisições feitas a api são em formato JSON;
 
 # User
-**Criar Usuário** 
+</br>
+
+**Criar Usuário**
+</br>
+
 **Método:** POST
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/users
+</br>
+
 **Objeto JSON a ser enviado:**
 
 ```JSON
@@ -96,17 +104,35 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 }
 ```
 
-**Listar Usuários** 
-**Método:** GET
-**Endpoint:** http://localhost:5000/api/v1/users
+**Listar Usuários**
+</br>
 
-**Listar um Usuário** 
 **Método:** GET
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/users
+</br>
+</br>
+
+**Listar um Usuário**
+</br>
+
+**Método:** GET
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/users/{id}
+</br>
+</br>
 
-**Atualizar Usuários** 
+**Atualizar Usuários**
+</br>
+
 **Método:** PUT
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/users
+</br>
+
 **Objeto JSON a ser enviado:**
 
 ```JSON
@@ -118,15 +144,28 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 }
 ```
 
-**Deletar um Usuário** 
+**Deletar um Usuário**
+</br>
+
 **Método:** DELETE
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/users/{id}
+</br>
 
 
 # Medico
-**Criar Médico** 
+</br>
+
+**Criar Médico**
+</br>
+
 **Método:** POST
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/medico
+</br>
+
 **Objeto JSON a ser enviado:**
 
 ```JSON
@@ -154,17 +193,32 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 }
 ```
 
-**Listar Médicos** 
-**Método:** GET
-**Endpoint:** http://localhost:5000/api/v1/medico
+**Listar Médicos** </br>
+</br>
 
-**Listar um Médico** 
+**Método:** GET 
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/medico
+</br>
+
+**Listar um Médico**
+</br>
+
 **Método:** GET
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/medico/{id}
 
-**Atualizar Médico** 
+**Atualizar Médico**
+</br>
+
 **Método:** PUT
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/medico
+</br>
+
 **Objeto JSON a ser enviado:**
 
 ```JSON
@@ -194,8 +248,13 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 ```
 
 **Deletar um Médico** 
-**Método:** DELETE
+</br>
+
+**Método:** DELETE 
+</br>
+
 **Endpoint:** http://localhost:5000/api/v1/medico/{id}
+</br>
 
 
 
