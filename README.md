@@ -82,7 +82,7 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 * Todos os caminhos da api utilizam o metodo de requisição GET;
 * As respostas das requisições feitas a api são em formato JSON;
 
-# User
+## User
 </br>
 
 **Criar Usuário**
@@ -98,9 +98,9 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 
 ```JSON
 {
-		"name": "Pio Lima",
-		"email": "pio@pio.com",
-		"password": "123456"
+  "name": "Pio Lima",
+	"email": "pio@pio.com",
+	"password": "123456"
 }
 ```
 
@@ -154,7 +154,7 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 </br>
 
 
-# Medico
+## Medico
 </br>
 
 **Criar Médico**
@@ -170,26 +170,26 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 
 ```JSON
 {
-		"nome": "Hipócrates da Grecia Antiga",
-		"sexo": "M",
-		"data_nasc": "1900-06-20T00:00:00Z",
-		"cpf": "99999999999",
-		"especialidade": "1",
-		"rqe": "44664644",
-		"crm_estado": "PARÁ",
-		"crm_numero": "121212",
-		"end_logradouro": "RUA ABCD",
-		"end_numero": "11111",
-		"end_complemento": "ESQUINA COM RUA B",
-		"end_bairro": "CENTRO",
-		"end_cidade": "SANTARÉM",
-		"end_uf": "PARÁ",
-		"end_cep": "68000-000",
-		"contato_email": "teste@teste.com",
-		"contato_telefone1": "939999-9999",
-		"contato_telefone2": " ",
-		"contato_telefone3": " ",
-		"contato_obs": " "
+	"nome": "Hipócrates da Grecia Antiga",
+	"sexo": "M",
+	"data_nasc": "1900-06-20T00:00:00Z",
+	"cpf": "99999999999",
+	"especialidade": "1",
+	"rqe": "44664644",
+	"crm_estado": "PARÁ",
+	"crm_numero": "121212",
+	"end_logradouro": "RUA ABCD",
+	"end_numero": "11111",
+	"end_complemento": "ESQUINA COM RUA B",
+	"end_bairro": "CENTRO",
+	"end_cidade": "SANTARÉM",
+	"end_uf": "PARÁ",
+	"end_cep": "68000-000",
+	"contato_email": "teste@teste.com",
+	"contato_telefone1": "939999-9999",
+	"contato_telefone2": " ",
+	"contato_telefone3": " ",
+	"contato_obs": " "
 }
 ```
 
@@ -250,18 +250,51 @@ Ela serve para que possamos fazer requisições (GET, POST, PUT, DELETE..).
 **Deletar um Médico** 
 </br>
 
-**Método:** DELETE 
+**Método:** DELETE
 </br>
 
 **Endpoint:** http://localhost:5000/api/v1/medico/{id}
 </br>
 
 
+## Login
+</br>
+
+**Realizar login do usuário**
+</br>
+
+**Método:** POST
+</br>
+
+**Endpoint:** http://localhost:5000/api/v1/login
+</br>
+
+**Objeto JSON a ser enviado:**
+
+```JSON
+{
+	"email": "pio@pio.com",
+	"password": "123456"
+}
+```
+Se os dados de login estiverem corretos, ele retornará um JSON como este abaixo:
+
+```
+{
+	"email": "pio@pio.com",
+	"id": 1,
+	"password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdW0iOjEsImV4cCI6MTY4NzgzMjQzNCwiaWF0IjoxNjg3ODI1MjM0LCJpc3MiOiJwYWNpZW50ZS1hcGkifQ.kiyduTv6wX0SQyKf9tslrIdlurDFPz8zfGMZaS1ZmP8"
+}
+```
+Este token é gerado no package services.
+
 
 ## :wrench: Tecnologias utilizadas
 * [Golang](https://go.dev/);
 * [Gin Framework](https://github.com/gin-gonic/gin);
 * [Gorm](gorm.io/gorm);
+* [Golang-JWT] (https://github.com/golang-jwt/jwt);
 * [Gorilla Mux](github.com/gorilla/mux);
 * [PostgreSQL](https://go.dev/);
 * [Github](https://go.dev/);
@@ -292,12 +325,24 @@ Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando 
 git clone https://github.com/pionetto/hygya-api.git
 ```
 
-Em seguida:
+Com o PostgreSQL instalado, execute o seguinte comando de criação das tabelas do banco de dados,
+localizado no arquivo database.sql.
+(Isso é necessário pelo fato das migrations não rodarem automaticamente com o AutoMigrate(), 
+no package migrations em database).
+
+Em seguida, para instalar as dependências do projeto e executar a aplicação,
+acesse a raiz da pasta do projeto e digite:
 
 ```
-git clone https://github.com/pionetto/hygya-api.git
+go run main.go
 ```
 
+O que ainda está sendo implementado?
+
+* Banco de dados hospedado na AWS-RDS
+* API hospedada na AWS-EC2
+* Frontend em ReactJS. https://hygya-interface.vercel.app/login
+* Repositório do Frontend: https://github.com/pionetto/hygya-interface
 
 ## :soon: Implementação futura
 * O que será implementado na próxima sprint?
