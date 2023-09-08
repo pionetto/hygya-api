@@ -44,7 +44,7 @@ func ShowPacientes(c *gin.Context) {
 	err := db.Find(&pacientes).Error
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "cannot list pacientes: " + err.Error(),
+			"error": "Não pode listar os pacientes: " + err.Error(),
 		})
 		return
 	}
